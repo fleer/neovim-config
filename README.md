@@ -2,6 +2,15 @@
 
 My Neovim config for daily development
 
+## Installation
+
+Clone the repository to `.config/nvim`:
+
+```shell
+cd ~/.config/
+git clone git@github.com:fleer/neovim-config.git nvim
+```
+
 ## Docker
 
 Execute Neovim in a Docker container.
