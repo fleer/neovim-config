@@ -42,30 +42,32 @@ return {
       "TestVisit",
     },
     config = function()
-      require("neotest").setup({
+      require("neotest").setup {
         adapters = {
-          require("neotest-python")({
+          require "neotest-python" {
             -- dap = { justMyCode = false },
-            runnter = "pytest",
-          }),
-          require("neotest-jest"),
-          require("neotest-go"),
-          require("neotest-plenary"),
-          require("neotest-vim-test")({
+            args = { "--log-level", "DEBUG", "--quiet" },
+            runner = "pytest",
+            pytest_discover_instances = true,
+          },
+          require "neotest-jest",
+          require "neotest-go",
+          require "neotest-plenary",
+          require "neotest-vim-test" {
             ignore_file_types = { "python", "vim", "lua" },
-          }),
-          require("neotest-rust"),
+          },
+          require "neotest-rust",
         },
         icons = { passed = "", failed = "", skipped = "󱐋", running = "󰔟", unknown = "" },
         -- overseer.nvim
         consumers = {
-          overseer = require("neotest.consumers.overseer"),
+          overseer = require "neotest.consumers.overseer",
         },
         overseer = {
           enabled = true,
           force_default = true,
         },
-      })
+      }
     end,
   },
 }
