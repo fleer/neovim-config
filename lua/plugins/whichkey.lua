@@ -2,13 +2,13 @@ return {
   "folke/which-key.nvim",
   event = "VeryLazy",
   config = function()
-    local wk = require("which-key")
-    wk.setup({
+    local wk = require "which-key"
+    wk.setup {
       show_help = false,
       plugins = { spelling = true },
       -- key_labels = { ["<leader>"] = "SPC" },
       triggers = "auto",
-    })
+    }
     wk.register({
       w = { "<cmd>update!<CR>", "Save" },
       q = { "<cmd>lua require('util').smart_quit()<CR>", "Quit" },
@@ -54,12 +54,12 @@ return {
       },
       s = {
         name = "+Search",
-        c = { [[ <Esc><Cmd>lua require('utils.term').cht_input()<CR>]], "cht.sh" },
+        c = { [[ <Esc><Cmd>lua require('utils.term').cht()<CR>]], "cht.sh" },
         s = { [[ <Esc><Cmd>lua require('utils.term').so()<CR>]], "Stack Overflow" },
       },
       t = {
         name = "+Test",
-        a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach" },
+        -- a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach" },
         f = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Run File" },
         w = { "<cmd>lua require('neotest').watch.toggle(vim.fn.expand('%'))<cr>", "Watch File" },
         -- F = { "<cmd>lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>", "Debug File" },
@@ -69,7 +69,7 @@ return {
         -- N = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Debug Nearest" },
         -- N = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Debug Nearest" },
         o = { "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Output" },
-        S = { "<cmd>lua require('neotest').run.stop()<cr>", "Stop" },
+        -- S = { "<cmd>lua require('neotest').run.stop()<cr>", "Stop" },
         s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary" },
         -- p = { "<Plug>PlenaryTestFile", "PlenaryTestFile" },
         v = { "<cmd>TestVisit<cr>", "Visit" },
