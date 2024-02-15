@@ -47,8 +47,7 @@ local servers = {
           enable = true,
         },
         schemas = {
-          ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/master-standalone-strict/all.json"] =
-          "*-k8s.yaml",
+          ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/master-standalone-strict/all.json"] = "*-k8s.yaml",
           ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
           ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "/Workflow/*",
           ["https://azuremlschemas.azureedge.net/latest/MLTable.schema.json"] = "MLTable",
@@ -196,12 +195,17 @@ end
 local function lsp_capabilities()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
+  capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
   -- Needed for UFO
-  capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true,
-  }
-  return require("cmp_nvim_lsp").default_capabilities(capabilities)
+  local present, ufo = pcall(require, "ufo")
+  if present then
+    capabilities.textDocument.foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true,
+    }
+  end
+  return capabilities
 end
 
 local options = {
