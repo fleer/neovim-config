@@ -33,7 +33,7 @@ return {
           visual_send = "<leader>rr",
           send_file = "<leader>rf",
           -- send_line = "<s-cr>",
-          send_line = "<leader>rl",
+          send_line = "<leader>rr",
           -- send_mark = "<leader>sm",
           -- mark_motion = "<leader>mc",
           -- mark_visual = "<leader>mc",

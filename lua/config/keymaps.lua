@@ -35,3 +35,7 @@ keymap("n", "<leader>q", "<cmd>call setqflist([])<cr>")
 keymap("n", "Q", "@qj")
 -- Apply macro to visual selection
 keymap("x", "Q", ":norm @q<CR>")
+
+-- Improved Iron.nvim by send and go to next line
+keymap("n", "<C-cr>", "<cmd>lua require('iron').core.send_line()<CR>j")
+keymap("v", "<C-cr>", "<cmd>lua require('iron').core.visual_send()<CR>j")
