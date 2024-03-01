@@ -115,31 +115,6 @@ return {
       -- background_colour = "#000000",
     },
   },
-
-  -- Better Netrw
-  -- {
-  -- 	"tpope/vim-vinegar",
-  -- 	event = "VeryLazy",
-  -- },
-  -- A vim-vinegar like file explorer that lets you edit your filesystem like a normal Neovim buffer.
-  {
-    "stevearc/oil.nvim",
-    config = function()
-      require("oil").setup {
-        -- Restore window options to previous values when leaving an oil buffer
-        restore_win_options = true,
-        -- Skip the confirmation popup for simple operations
-        skip_confirm_for_simple_edits = false,
-        view_options = {
-          -- Show files and directories that start with "."
-          show_hidden = true,
-        },
-      }
-    end,
-    keys = {
-      { "-", "<cmd>lua require('oil').open()<CR>", mode = "n", desc = "Open parent directory" },
-    },
-  },
   {
     "tpope/vim-fugitive",
     -- cmd = {"Git", "Gwrite"},

@@ -6,7 +6,7 @@ return {
       { "windwp/nvim-ts-autotag", event = "InsertEnter" },
       { "JoosepAlviste/nvim-ts-context-commentstring", event = "BufReadPre" },
       { "HiPhish/rainbow-delimiters.nvim", event = "BufReadPre" },
-      { "RRethy/nvim-treesitter-textsubjects", event = "BufReadPre" },
+      -- { "RRethy/nvim-treesitter-textsubjects", event = "BufReadPre" },
       -- End wise
       {
         "RRethy/nvim-treesitter-endwise",
@@ -38,14 +38,14 @@ return {
               { fg = "#EEF06D" },
               { fg = "#8FB272" },
             },
-            excluded_filetypes = {
-              "lua",
-              "rust",
-              "typescript",
-              "typescriptreact",
-              "javascript",
-              "javascriptreact",
-            },
+            -- excluded_filetypes = {
+            --   "lua",
+            --   "rust",
+            --   "typescript",
+            --   "typescriptreact",
+            --   "javascript",
+            --   "javascriptreact",
+            -- },
           }
         end,
       },
@@ -77,11 +77,6 @@ return {
         },
         rainbow = {
           enable = true,
-          -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-          extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-          max_file_lines = nil, -- Do not enable for files with more than n lines, int
-          -- colors = {}, -- table of hex strings
-          -- termcolors = {} -- table of colour name strings
         },
         -- endwise
         endwise = {

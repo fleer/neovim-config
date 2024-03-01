@@ -143,13 +143,6 @@ return {
           },
         },
       }
-      -- local mr = require("mason-registry")
-      -- for _, tool in ipairs(plugin.ensure_installed) do
-      -- 	local p = mr.get_package(tool)
-      -- 	if not p:is_installed() then
-      -- 		p:install()
-      -- 	end
-      -- end
     end,
   },
   {
@@ -166,7 +159,7 @@ return {
           "eslint-lsp",
           "typescript-language-server",
           "ruff_lsp",
-          "prettier",
+          "prettierd",
         },
         auto_update = false,
         run_on_start = true,
@@ -177,15 +170,6 @@ return {
     "nvimtools/none-ls.nvim",
     event = "BufReadPre",
     dependencies = { "mason.nvim" },
-    -- config = function()
-    -- 	local nls = require "null-ls"
-    -- 	nls.setup {
-    -- 	  sources = {
-    -- 	    nls.builtins.formatting.stylua,
-    -- 	    nls.builtins.diagnostics.ruff.with { extra_args = { "--max-line-length=180" } },
-    -- 	  },
-    -- 	}
-    -- end,
   },
   {
     "utilyre/barbecue.nvim",

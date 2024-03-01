@@ -2,7 +2,8 @@ local M = {}
 
 local nls = require "null-ls"
 local nls_utils = require "null-ls.utils"
---[[ local refurb = require "config.lsp.null-ls.diagnostics.refurb" ]]
+local refurb = require "plugins.lsp.null-ls.diagnostics.refurb"
+
 local b = nls.builtins
 
 local with_diagnostics_code = function(builtin)
@@ -23,7 +24,6 @@ end
 local sources = {
   --[[ b.formatting.sqlfluff.with({ extra_args = { "--dialect", "postgres" } }), ]]
   b.formatting.shfmt,
-  -- b.formatting.ngnix_beautifier,
   with_root_file(b.formatting.stylua, "stylua.toml"),
 
   -- diagnostics
@@ -41,10 +41,11 @@ local sources = {
   --   end
   -- end,
 
+  b.formatting.prettierd,
   -- hover
   b.hover.dictionary,
   -- Python 10 refurb
-  --[[ refurb, ]]
+  refurb,
 }
 
 function M.setup(opts)
@@ -54,17 +55,6 @@ function M.setup(opts)
     save_after_format = true,
     sources = sources,
     on_attach = opts.on_attach,
-    -- on_attach = function(client)
-    --     if client.server_capabilities.document_formatting then
-    --         vim.cmd([[
-    --         augroup LspFormatting
-    --             autocmd! * <buffer>
-    --             autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-    --         augroup END
-    --         ]])
-    --     end
-    -- end,
-    -- root_dir = nls_utils.root_pattern(".null-ls-root",".git"),
   }
 end
 

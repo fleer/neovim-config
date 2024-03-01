@@ -1,7 +1,10 @@
 return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    -- {
+    --   "nvim-telescope/telescope-fzf-native.nvim",
+    --   build = "make",
+    -- },
     { "nvim-telescope/telescope-media-files.nvim" },
     -- needed by media files
     { "nvim-lua/popup.nvim" },
@@ -114,7 +117,7 @@ return {
       },
     }
     telescope.setup(opts)
-    telescope.load_extension "fzf"
+    -- telescope.load_extension "fzf"
     telescope.load_extension "media_files"
   end,
 }
