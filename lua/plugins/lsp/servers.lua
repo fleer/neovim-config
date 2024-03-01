@@ -97,6 +97,7 @@ local servers = {
     },
   },
   eslint = {},
+  -- handled via typescript-tools
   tsserver = {
     disable_formatting = true,
     settings = {
@@ -141,15 +142,22 @@ local function on_attach(client, bufnr)
   -- See `:help formatexpr` for more information.
   vim.api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 
-  -- Configure for Typescript
-  if client.name == "tsserver" then
-    require("plugins.lsp.ts-utils").setup(client)
+  -- Used for barbecue.nvim
+  if caps["documentSymbolProvider"] then
+    -- Handled via tsserver
+    if client.name ~= "typescript-tools" then
+      require("nvim-navic").attach(client, bufnr)
+    end
   end
 
-  -- nvim-navic for window bar
-  if client.server_capabilities.documentSymbolProvider then
-    local navic = require "nvim-navic"
-    navic.attach(client, bufnr)
+  if client.name == "eslint" then
+    -- caps.document_formatting = true
+    -- Eslint AutoFormat
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
+      command = "silent! EslintFixAll",
+      group = vim.api.nvim_create_augroup("MyAutocmdsJavaScripFormatting", {}),
+    })
   end
 
   if client.name == "julials" then
@@ -235,6 +243,7 @@ function M.setup()
     function(server)
       local opts = servers[server] or {}
       opts.capabilities = lsp_capabilities()
+      opts.on_attach = on_attach
       require("lspconfig")[server].setup(opts)
     end,
   }

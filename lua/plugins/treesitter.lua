@@ -2,11 +2,11 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      { "windwp/nvim-ts-autotag",                      event = "InsertEnter" },
+      -- { "nvim-treesitter/nvim-treesitter-textobjects", event = "BufReadPre" },
+      { "windwp/nvim-ts-autotag", event = "InsertEnter" },
       { "JoosepAlviste/nvim-ts-context-commentstring", event = "BufReadPre" },
-      { "p00f/nvim-ts-rainbow",                        event = "BufReadPre" },
-      { "RRethy/nvim-treesitter-textsubjects",         event = "BufReadPre" },
+      { "HiPhish/rainbow-delimiters.nvim", event = "BufReadPre" },
+      { "RRethy/nvim-treesitter-textsubjects", event = "BufReadPre" },
       -- End wise
       {
         "RRethy/nvim-treesitter-endwise",
@@ -18,7 +18,7 @@ return {
         "m-demare/hlargs.nvim",
         event = "BufReadPre",
         config = function()
-          require("hlargs").setup({
+          require("hlargs").setup {
             color = "#ef9062",
             use_colorpalette = false,
             -- highlight = { "TSParameter" },
@@ -46,7 +46,7 @@ return {
               "javascript",
               "javascriptreact",
             },
-          })
+          }
         end,
       },
     },
@@ -69,7 +69,7 @@ return {
         return n, p
       end)()
 
-      require("nvim-treesitter.configs").setup({
+      require("nvim-treesitter.configs").setup {
         ensure_installed = "all",
         highlight = {
           enable = true,
@@ -148,7 +148,7 @@ return {
             swap_previous = swap_prev,
           },
         },
-      })
+      }
     end,
   },
   {
