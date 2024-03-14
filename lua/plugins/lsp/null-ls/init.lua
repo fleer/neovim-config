@@ -22,7 +22,7 @@ end
 
 -- TODO: create own file in ./diagnostics/ for all sources
 local sources = {
-  --[[ b.formatting.sqlfluff.with({ extra_args = { "--dialect", "postgres" } }), ]]
+  b.formatting.sqlfluff.with { extra_args = { "--dialect", "postgres" } },
   b.formatting.shfmt,
   with_root_file(b.formatting.stylua, "stylua.toml"),
 
@@ -41,7 +41,7 @@ local sources = {
   --   end
   -- end,
 
-  b.formatting.prettierd,
+  b.formatting.prettier,
   -- hover
   b.hover.dictionary,
   -- Python 10 refurb
