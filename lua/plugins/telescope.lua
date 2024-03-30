@@ -5,14 +5,12 @@ return {
     --   "nvim-telescope/telescope-fzf-native.nvim",
     --   build = "make",
     -- },
-    { "nvim-telescope/telescope-media-files.nvim" },
     -- needed by media files
     { "nvim-lua/popup.nvim" },
   },
   cmd = "Telescope",
   keys = {
     { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
-    { "<leader>fm", "<cmd>Telescope media_files<cr>", desc = "Find Media Files" },
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
     { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
     { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
@@ -95,7 +93,7 @@ return {
           -- theme = "dropdown",
           -- previewer = false,
           hidden = true,
-          find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
+          find_command = { "rg", "--files", "--hidden", "-g", "!.git", "-g", "!.angular" },
         },
         git_files = {
           theme = "dropdown",
@@ -117,7 +115,5 @@ return {
       },
     }
     telescope.setup(opts)
-    -- telescope.load_extension "fzf"
-    telescope.load_extension "media_files"
   end,
 }

@@ -24,11 +24,11 @@ return {
       require("mini.indentscope").setup(opts)
     end,
   },
-  {
-    "stevearc/dressing.nvim",
-    event = "VeryLazy",
-    config = true,
-  },
+  -- {
+  --   "stevearc/dressing.nvim",
+  --   event = "VeryLazy",
+  --   config = true,
+  -- },
   -- noicer ui
   {
     "folke/noice.nvim",
@@ -47,6 +47,7 @@ return {
         },
       },
       presets = {
+        inc_rename = true,
         bottom_search = true,
         command_palette = true,
         long_message_to_split = true,
