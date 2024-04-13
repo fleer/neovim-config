@@ -4,14 +4,6 @@ return {
     event = "BufReadPre",
     version = false,
     dependencies = {
-      -- { "folke/neoconf.nvim",      cmd = "Neoconf", config = true },
-      {
-        "folke/neodev.nvim",
-        config = true,
-        opts = {
-          library = { plugins = { "neotest", "nvim-dap-ui" }, types = true },
-        },
-      },
       { "smjonas/inc-rename.nvim", config = true },
       "b0o/schemastore.nvim",
       "rust-lang/rust.vim",
