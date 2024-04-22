@@ -19,6 +19,7 @@ return {
         c = { "<cmd>lua require('utils.term').git_commit_toggle()<CR>", "Conventional Commits" },
         s = { "<cmd>Git<CR>", "Status" },
         p = { "<cmd>Git push<CR>", "Push" },
+        u = { "<cmd>Git pull<CR>", "Pll" },
         b = { "<cmd>Git blame<CR>", "Blame" },
         h = { "<cmd>0Gclog<cr>", "File History" },
         d = { "<cmd>Gvdiffsplit<cr>", "Diffview" },
