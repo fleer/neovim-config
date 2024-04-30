@@ -35,8 +35,8 @@ return {
     name = "catppuccin",
     config = function()
       local catppuccin = require "catppuccin"
-      catppuccin.setup { flavour = "mocha" }
-      -- catppuccin.load()
+      catppuccin.setup { flavour = "latte" }
+      catppuccin.load()
     end,
     priority = 1000,
   },
@@ -101,23 +101,23 @@ return {
       style = "dark",
       transparent = false,
       code_style = {
-        comments = 'italic',
-        keywords = 'bold',
-        functions = 'bold',
-        strings = 'none',
-        variables = 'none'
+        comments = "italic",
+        keywords = "bold",
+        functions = "bold",
+        strings = "none",
+        variables = "none",
       },
       -- Plugins Config --
       diagnostics = {
-        darker = true,     -- darker colors for diagnostic
-        undercurl = true,  -- use undercurl instead of underline for diagnostics
+        darker = true, -- darker colors for diagnostic
+        undercurl = true, -- use undercurl instead of underline for diagnostics
         background = true, -- use background color for virtual text
       },
     },
     config = function(_, opts)
       local onedark = require "onedark"
       onedark.setup(opts)
-      onedark.load()
+      -- onedark.load()
     end,
   },
   {
