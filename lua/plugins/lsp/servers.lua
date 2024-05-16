@@ -171,9 +171,10 @@ local function on_attach(client, bufnr)
   end
 
   if client.name ~= "null-ls" then
-    -- inlay-hints
-    local ih = require "inlay-hints"
-    ih.on_attach(client, bufnr)
+    -- Enable inlay hints
+    if caps.inlayHintProvider then
+      vim.lsp.inlay_hint.enable(true, { bufnr })
+    end
     -- semantic highlighting
     if caps.semanticTokensProvider and caps.semanticTokensProvider.full then
       local augroup = vim.api.nvim_create_augroup("SemanticTokens", {})

@@ -90,10 +90,6 @@ return {
           },
         },
       },
-      {
-        "simrat39/inlay-hints.nvim",
-        config = true,
-      },
       -- Support for semantic tokens for Neovim is still under development.
       {
         "theHamsta/nvim-semantic-tokens",

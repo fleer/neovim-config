@@ -2,18 +2,6 @@
 ---- ━━━━━━━━━━━━━━━━━❰ Editing ❱━━━━━━━━━━━━━━━━━━━━━ --
 return {
   {
-    -- gcc to comment out a line (takes a count),
-    -- gc to comment out the target of a motion (for example,
-    -- gcap to comment out a paragraph), gc in visual mode to comment out the selection,
-    -- and gc in operator pending mode to target a comment.
-    'echasnovski/mini.comment',
-    version = '*',
-    event = "CursorMoved",
-    config = function()
-      require('mini.comment').setup()
-    end
-  },
-  {
     --[[
       Surround.vim is all about 'surroundings': parentheses, brackets, quotes, XML tags, and more.
       The plugin provides mappings to easily delete, change and add such surroundings in pairs.
@@ -40,7 +28,7 @@ return {
     event = "VeryLazy",
     dependencies = { { "ggandor/flit.nvim", opts = { labeled_modes = "nv" } } },
     config = function(_, opts)
-      local leap = require("leap")
+      local leap = require "leap"
       for k, v in pairs(opts) do
         leap.opts[k] = v
       end
@@ -75,10 +63,10 @@ return {
     },
     config = function()
       -- <leader>y - Automatically remove trailing whitespace
-      vim.cmd([[
+      vim.cmd [[
           let g:better_whitespace_filetypes_blacklist=['startify', 'packer', 'toggleterm', 'diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'markdown', 'fugitive', 'ranger', '']
           let g:better_whitespace_operator=''
-        ]])
+        ]]
     end,
   },
   -- todo comments
