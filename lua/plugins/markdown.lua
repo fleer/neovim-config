@@ -14,13 +14,13 @@ return {
     -- Markdown Mode
     "preservim/vim-markdown",
     dependencies = "godlygeek/tabular",
-    branch = 'master',
+    branch = "master",
     -- event = "VeryLazy",
     ft = { "markdown", "pandoc.markdown" },
   },
   {
     -- Table autocomplete
-    'dhruvasagar/vim-table-mode',
+    "dhruvasagar/vim-table-mode",
     ft = { "markdown", "pandoc.markdown" },
   },
   -- {
@@ -43,6 +43,16 @@ return {
   --     ]]
   --   end,
   -- },
+  {
+    "denstiny/styledoc.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "vhyrro/luarocks.nvim",
+      "3rd/image.nvim",
+    },
+    opts = true,
+    ft = "markdown",
+  },
   -- Fenced Markdown code-blocks
   { "AckslD/nvim-FeMaco.lua", ft = { "markdown" }, opts = {} },
   -- Markdown Preview
@@ -53,6 +63,5 @@ return {
     init = function()
       vim.g.mkdp_filetypes = { "markdown" }
     end,
-
   },
 }

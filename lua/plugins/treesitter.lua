@@ -4,7 +4,6 @@ return {
     dependencies = {
       -- { "nvim-treesitter/nvim-treesitter-textobjects", event = "BufReadPre" },
       { "windwp/nvim-ts-autotag", event = "InsertEnter" },
-      { "JoosepAlviste/nvim-ts-context-commentstring", event = "BufReadPre" },
       { "HiPhish/rainbow-delimiters.nvim", event = "BufReadPre" },
       -- { "RRethy/nvim-treesitter-textsubjects", event = "BufReadPre" },
       -- End wise
@@ -155,5 +154,11 @@ return {
         check_ts = true,
       }
     end,
+  },
+  {
+    "folke/ts-comments.nvim",
+    opts = {},
+    event = "VeryLazy",
+    enabled = vim.fn.has "nvim-0.10.0" == 1,
   },
 }
