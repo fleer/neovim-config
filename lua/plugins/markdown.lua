@@ -2,14 +2,6 @@ return {
   -- ============================================================================ "
   -- ===                                 Markdown.                              === "
   -- ============================================================================ "
-  --
-  -- Add Headlines to markdown files
-  -- {
-  --    'lukas-reineke/headlines.nvim',
-  --    dependencies = "nvim-treesitter/nvim-treesitter",
-  --    config = true, -- or `opts = {}`
-  --  },
-  --
   {
     -- Markdown Mode
     "preservim/vim-markdown",
@@ -43,16 +35,16 @@ return {
   --     ]]
   --   end,
   -- },
-  {
-    "denstiny/styledoc.nvim",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "vhyrro/luarocks.nvim",
-      "3rd/image.nvim",
-    },
-    opts = true,
-    ft = "markdown",
-  },
+  -- {
+  --   "denstiny/styledoc.nvim",
+  --   dependencies = {
+  --     "nvim-treesitter/nvim-treesitter",
+  --     "vhyrro/luarocks.nvim",
+  --     "3rd/image.nvim",
+  --   },
+  --   opts = true,
+  --   ft = "markdown",
+  -- },
   -- Fenced Markdown code-blocks
   { "AckslD/nvim-FeMaco.lua", ft = { "markdown" }, opts = {} },
   -- Markdown Preview
