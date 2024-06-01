@@ -25,12 +25,12 @@ return {
   config = function(_, _)
     local icons = require "config.icons"
     local telescope = require "telescope"
-    local trouble = require "trouble.providers.telescope"
+    local trouble = require "trouble.sources.telescope"
     local actions = require "telescope.actions"
     local actions_layout = require "telescope.actions.layout"
     local mappings = {
       i = {
-        ["<c-d>"] = trouble.open_with_trouble,
+        ["<c-d>"] = trouble.open,
         ["<C-n>"] = actions.move_selection_next,
         ["<C-p>"] = actions.move_selection_previous,
         ["<C-j>"] = actions.cycle_history_next,
@@ -38,7 +38,7 @@ return {
         ["?"] = actions_layout.toggle_preview,
       },
       n = {
-        ["<c-t>"] = trouble.open_with_trouble,
+        ["<c-t>"] = trouble.open,
       },
     }
     local opts = {
