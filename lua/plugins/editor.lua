@@ -55,20 +55,6 @@ return {
       },
     },
   },
-  {
-    "ntpeters/vim-better-whitespace",
-    cmd = "StripWhitespace",
-    keys = {
-      { "<leader>y", "<cmd>:StripWhitespace<cr>", desc = "Strip Whitespaces", remap = true },
-    },
-    config = function()
-      -- <leader>y - Automatically remove trailing whitespace
-      vim.cmd [[
-          let g:better_whitespace_filetypes_blacklist=['startify', 'packer', 'toggleterm', 'diff', 'git', 'gitcommit', 'unite', 'qf', 'help', 'markdown', 'fugitive', 'ranger', '']
-          let g:better_whitespace_operator=''
-        ]]
-    end,
-  },
   -- todo comments
   {
     "folke/todo-comments.nvim",
