@@ -72,6 +72,55 @@ return {
         end,
         desc = "Colorscheme",
       },
+
+      { "<leader>cc", group = "+Copilot", icon = "" },
+      -- Quick chat with Copilot
+      {
+        "<leader>ccq",
+        function()
+          local input = vim.fn.input "Quick Chat: "
+          if input ~= "" then
+            require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+          end
+        end,
+        desc = "CopilotChat - Quick chat",
+      },
+      -- Show help actions with telescope
+      {
+        "<leader>cch",
+        function()
+          local actions = require "CopilotChat.actions"
+          require("CopilotChat.integrations.telescope").pick(actions.help_actions())
+        end,
+        desc = "CopilotChat - Help actions",
+      },
+      -- Show prompts actions with telescope
+      {
+        "<leader>ccp",
+        function()
+          local actions = require "CopilotChat.actions"
+          require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+        end,
+        desc = "CopilotChat - Prompt actions",
+      },
+      {
+        "<leader>ccd",
+        "<cmd>CopilotChatDocs<cr>",
+        mode = { "n", "v" },
+        desc = "CopilotChat - Add Docs for the selection",
+      },
+      { "<leader>cce", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
+      { "<leader>cct", "<cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate tests" },
+      {
+        "<leader>ccf",
+        "<cmd>CopilotChatFixDiagnostic<cr>", -- Get a fix for the diagnostic message under the cursor.
+        desc = "CopilotChat - Fix diagnostic",
+      },
+      {
+        "<leader>ccr",
+        "<cmd>CopilotChatReset<cr>", -- Reset chat history and clear buffer.
+        desc = "CopilotChat - Reset chat history and clear buffer",
+      },
     }
   end,
 }
