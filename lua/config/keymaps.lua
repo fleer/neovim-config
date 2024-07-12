@@ -23,12 +23,12 @@ keymap("n", "<S-Right>", "<cmd>vertical resize +2<CR>")
 
 -- === Search shorcuts === "
 --   <leader>h - Find and replace
---   <leader>/ - Claer highlighted search terms while preserving history
-keymap("n", "<leader>h", ":%s###<left><left>")
-keymap("n", "<leader>/", ":nohlsearch<CR>")
+--   <leader>/ - Clear highlighted search terms while preserving history
+-- keymap("n", "<leader>h", ":%s###<left><left>")
+-- keymap("n", "<leader>/", ":nohlsearch<CR>")
 
 -- Clear Quickfix list
-keymap("n", "<leader>q", "<cmd>call setqflist([])<cr>")
+-- keymap("n", "<leader>q", "<cmd>call setqflist([])<cr>")
 
 -- Macro recording
 -- Use recording in q and go to next line

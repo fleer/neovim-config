@@ -1,27 +1,10 @@
 return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
-    -- {
-    --   "nvim-telescope/telescope-fzf-native.nvim",
-    --   build = "make",
-    -- },
     -- needed by media files
     { "nvim-lua/popup.nvim" },
   },
   cmd = "Telescope",
-  keys = {
-    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
-    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
-    { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-    { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
-    {
-      "<leader>zc",
-      function()
-        require("telescope.builtin").colorscheme { enable_preview = true }
-      end,
-      desc = "Colorscheme",
-    },
-  },
   config = function(_, _)
     local icons = require "config.icons"
     local telescope = require "telescope"

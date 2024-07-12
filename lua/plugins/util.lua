@@ -2,14 +2,24 @@ return {
   -- library used by other plugins
   "nvim-lua/plenary.nvim",
   -- icons
+  -- {
+  -- "nvim-tree/nvim-web-devicons",
+  -- },
   {
-    "nvim-tree/nvim-web-devicons",
-    -- dependencies = { "DaikyXendo/nvim-material-icon" },
-    -- config = function()
-    --   require("nvim-web-devicons").setup {
-    --     override = require("nvim-material-icon").get_icons(),
-    --   }
-    -- end,
+    "echasnovski/mini.icons",
+    opts = {},
+    lazy = true,
+    specs = {
+      { "nvim-tree/nvim-web-devicons", enabled = false, optional = true },
+    },
+    init = function()
+      package.preload["nvim-web-devicons"] = function()
+        -- needed since it will be false when loading and mini will fail
+        package.loaded["nvim-web-devicons"] = {}
+        require("mini.icons").mock_nvim_web_devicons()
+        return package.loaded["nvim-web-devicons"]
+      end
+    end,
   },
 
   -- makes some plugins dot-repeatable like leap

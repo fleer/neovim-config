@@ -10,13 +10,18 @@ return {
     event = "VeryLazy",
     config = function()
       require("oil").setup {
+        delete_to_trash = true,
         -- Restore window options to previous values when leaving an oil buffer
         restore_win_options = true,
         -- Skip the confirmation popup for simple operations
-        skip_confirm_for_simple_edits = false,
+        skip_confirm_for_simple_edits = true,
         view_options = {
           -- Show files and directories that start with "."
           show_hidden = true,
+          natural_order = true,
+          is_always_hidden = function(name, _)
+            return name == ".." or name == ".git"
+          end,
         },
         win_options = {
           signcolumn = "yes:2",
