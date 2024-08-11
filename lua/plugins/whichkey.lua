@@ -6,8 +6,10 @@ return {
     wk.setup {
       show_help = false,
       plugins = { spelling = true },
-      -- key_labels = { ["<leader>"] = "SPC" },
-      triggers = "auto",
+      triggers = {
+        { "<auto>", mode = "nixsotc" },
+        { "a", mode = { "n", "v" } },
+      },
     }
     wk.add {
       { "<leader>h", ":%s###<left><left>", desc = "Find and replace" },
@@ -44,11 +46,11 @@ return {
       { "<leader>l", group = "+LSP" },
       { "<leader>r", group = "+REPL" },
       { "<leader>c", group = "+Code" },
-      { "<leader>g", group = "Generate Docstring" },
-      { "<leader>ga", desc = "Annotation" },
-      { "<leader>gf", desc = "Function" },
-      { "<leader>gp", desc = "Parameter" },
-      { "<leader>gc", desc = "Class" },
+      { "<leader>cg", group = "Generate Docstring" },
+      { "<leader>cga", desc = "Annotation" },
+      { "<leader>cgf", desc = "Function" },
+      { "<leader>cgp", desc = "Parameter" },
+      { "<leader>cgc", desc = "Class" },
       { "<leader>s", group = "+Search" },
       {
         "<leader>sc",
