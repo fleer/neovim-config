@@ -2,10 +2,10 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
-      -- { "nvim-treesitter/nvim-treesitter-textobjects", event = "BufReadPre" },
+      { "nvim-treesitter/nvim-treesitter-textobjects", event = "BufReadPre" },
       { "windwp/nvim-ts-autotag", event = "InsertEnter" },
       { "HiPhish/rainbow-delimiters.nvim", event = "BufReadPre" },
-      -- { "RRethy/nvim-treesitter-textsubjects", event = "BufReadPre" },
+      { "RRethy/nvim-treesitter-textsubjects", event = "BufReadPre" },
       -- End wise
       {
         "RRethy/nvim-treesitter-endwise",
@@ -19,24 +19,42 @@ return {
         config = function()
           require("hlargs").setup {
             color = "#ef9062",
-            use_colorpalette = false,
+            use_colorpalette = true,
             -- highlight = { "TSParameter" },
+            -- For Light Themes
             colorpalette = {
-              { fg = "#ef9062" },
-              { fg = "#3AC6BE" },
-              { fg = "#35D27F" },
-              { fg = "#EB75D6" },
-              { fg = "#E5D180" },
-              { fg = "#8997F5" },
-              { fg = "#D49DA5" },
-              { fg = "#7FEC35" },
-              { fg = "#F6B223" },
-              { fg = "#F67C1B" },
-              { fg = "#DE9A4E" },
-              { fg = "#BBEA87" },
-              { fg = "#EEF06D" },
-              { fg = "#8FB272" },
+              { fg = "#5c6370" }, -- Dark gray
+              { fg = "#e06c75" }, -- Light red
+              { fg = "#98c379" }, -- Light green
+              { fg = "#c678dd" }, -- Light purple
+              { fg = "#e5c07b" }, -- Light yellow
+              { fg = "#61afef" }, -- Light blue
+              { fg = "#d19a66" }, -- Light orange
+              { fg = "#56b6c2" }, -- Light cyan
+              { fg = "#abb2bf" }, -- Light gray
+              { fg = "#d7ba7d" }, -- Light brown
+              { fg = "#be5046" }, -- Light red-brown
+              { fg = "#b3b9c5" }, -- Light gray-blue
+              { fg = "#c8ccd4" }, -- Light gray-green
+              { fg = "#7d8799" }, -- Medium gray
             },
+            -- For Dark Themes
+            -- colorpalette = {
+            --   { fg = "#ef9062" },
+            --   { fg = "#3AC6BE" },
+            --   { fg = "#35D27F" },
+            --   { fg = "#EB75D6" },
+            --   { fg = "#E5D180" },
+            --   { fg = "#8997F5" },
+            --   { fg = "#D49DA5" },
+            --   { fg = "#7FEC35" },
+            --   { fg = "#F6B223" },
+            --   { fg = "#F67C1B" },
+            --   { fg = "#DE9A4E" },
+            --   { fg = "#BBEA87" },
+            --   { fg = "#EEF06D" },
+            --   { fg = "#8FB272" },
+            -- },
             -- excluded_filetypes = {
             --   "lua",
             --   "rust",
