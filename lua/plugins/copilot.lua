@@ -37,6 +37,11 @@ return {
           width = 0.8,
           height = 0.8,
         },
+        prompts = {
+          Docs = {
+            prompt = "/COPILOT_GENERATE Please add documentation comment for the selection and respect the following restrictions: The lines of the comment should not exceed 80 characters. No line numbers should be displayed.",
+          },
+        },
       }
     end,
     event = "VeryLazy",
