@@ -15,7 +15,6 @@ return {
     },
     config = function()
       local cmp = require "cmp"
-      local neogen = require "neogen"
       local luasnip = require "luasnip"
       local icons = require "config.icons"
       local cmp_autopairs = require "nvim-autopairs.completion.cmp"
@@ -54,8 +53,6 @@ return {
               cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
               luasnip.expand_or_jump()
-            elseif neogen.jumpable() then
-              neogen.jump_next()
             elseif has_words_before() then
               cmp.complete()
             else
@@ -71,8 +68,6 @@ return {
               cmp.select_prev_item()
             elseif luasnip.jumpable(-1) then
               luasnip.jump(-1)
-            elseif neogen.jumpable(true) then
-              neogen.jump_prev()
             else
               fallback()
             end
@@ -83,8 +78,8 @@ return {
           }),
         },
         sources = cmp.config.sources {
-             -- Copilot Source
-          { name = "copilot"}, --, group_index = 2 },
+          -- Copilot Source
+          { name = "copilot" }, --, group_index = 2 },
           { name = "nvim_lsp_signature_help" },
           { name = "nvim_lsp" },
           { name = "luasnip" },
@@ -114,11 +109,11 @@ return {
             end
             item.kind = icons.kind[item.kind]
             item.menu = source_names[entry.source.name]
-            -- Highlight for Copilot 
+            -- Highlight for Copilot
             item.dup = duplicates[entry.source.name] or duplicates_default
 
-            -- Highlight for Copilot 
-            vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
+            -- Highlight for Copilot
+            vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
             return item
           end,
         },
@@ -169,14 +164,16 @@ return {
         [[
           autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
           autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
-        ]], false
+        ]],
+        false
       )
     end,
   },
   {
     "L3MON4D3/LuaSnip",
     dependencies = {
-      { "rafamadriz/friendly-snippets",
+      {
+        "rafamadriz/friendly-snippets",
         config = function()
           local snippets_folder = vim.fn.stdpath "config" .. "/lua/config/snip/snippets/"
           require("luasnip.loaders.from_vscode").lazy_load()
@@ -186,7 +183,7 @@ return {
           require("luasnip.loaders.from_vscode").lazy_load { paths = { "./snippets/python" } }
           require("luasnip.loaders.from_vscode").lazy_load { paths = { "./snippets/rust" } }
         end,
-      }
+      },
     },
     opts = {
       history = true,

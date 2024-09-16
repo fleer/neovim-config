@@ -46,11 +46,6 @@ return {
       { "<leader>l", group = "+LSP" },
       { "<leader>r", group = "+REPL" },
       { "<leader>c", group = "+Code" },
-      { "<leader>cg", group = "Generate Docstring" },
-      { "<leader>cga", desc = "Annotation" },
-      { "<leader>cgf", desc = "Function" },
-      { "<leader>cgp", desc = "Parameter" },
-      { "<leader>cgc", desc = "Class" },
       { "<leader>s", group = "+Search" },
       {
         "<leader>sc",
@@ -107,7 +102,7 @@ return {
       },
       {
         "<leader>ccd",
-        "<cmd>CopilotChatDocs<cr>",
+        "<cmd>'<,'>CopilotChatDocs<cr>",
         mode = { "n", "v" },
         desc = "CopilotChat - Add Docs for the selection",
       },

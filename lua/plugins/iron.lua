@@ -3,8 +3,8 @@ return {
     "Vigemus/iron.nvim",
     cmd = "IronRepl",
     branch = "master",
-    -- event = "VeryLazy",
     -- version = "v3.0",
+    event = "VeryLazy",
     config = function()
       require("iron.core").setup {
         config = {

@@ -111,6 +111,14 @@ return {
     dependencies = { "tpope/vim-rhubarb" },
   },
   {
+    "rbong/vim-flog",
+    lazy = true,
+    cmd = { "Flog", "Flogsplit" },
+    dependencies = {
+      "tpope/vim-fugitive",
+    },
+  },
+  {
     "pwntester/octo.nvim",
     cmd = "Octo",
     config = true,
