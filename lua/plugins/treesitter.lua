@@ -1,8 +1,9 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    version = "*",
     dependencies = {
-      { "nvim-treesitter/nvim-treesitter-textobjects", event = "BufReadPre" },
+      -- { "nvim-treesitter/nvim-treesitter-textobjects", event = "BufReadPre" },
       { "windwp/nvim-ts-autotag", event = "InsertEnter" },
       { "HiPhish/rainbow-delimiters.nvim", event = "BufReadPre" },
       { "RRethy/nvim-treesitter-textsubjects", event = "BufReadPre" },

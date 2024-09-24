@@ -45,15 +45,15 @@ vim.opt.autoread = true
 vim.opt.swapfile = false
 
 -- Treesitter based folding
--- vim.opt.foldlevel = 20
--- vim.opt.foldmethod = "expr"
--- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 20
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- Use nvim-ufo
-vim.o.foldcolumn = '1' -- '0' is not bad
-vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = -1
-vim.o.foldenable = true
+-- vim.o.foldcolumn = '1' -- '0' is not bad
+-- vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+-- vim.o.foldlevelstart = -1
+-- vim.o.foldenable = true
 
 -- ============================================================================ "
 -- ===                               Development                            === "
@@ -68,7 +68,7 @@ vim.g.skip_ts_context_commentstring_module = true
 -- ============================================================================ "
 -- ===                                UI                                    === "
 -- ============================================================================ "
-vim.opt.number = true         -- Show line numbers
+vim.opt.number = true -- Show line numbers
 vim.opt.relativenumber = true -- Show relative numbers
 
 -- Enable true color support
@@ -83,5 +83,5 @@ vim.g.maplocalleader = ","
 -- Don't display ~ at the beginning of empty lines
 vim.opt.fillchars = "eob: "
 
-package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua;"
-package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua;"
+package.path = package.path .. ";" .. vim.fn.expand "$HOME" .. "/.luarocks/share/lua/5.1/?/init.lua;"
+package.path = package.path .. ";" .. vim.fn.expand "$HOME" .. "/.luarocks/share/lua/5.1/?.lua;"
