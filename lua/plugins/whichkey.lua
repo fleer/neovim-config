@@ -39,9 +39,9 @@ return {
       {
         "<leader>gl",
         function()
-          require("utils.term").git_client_toggle()
+          require("gitgraph").draw({}, { all = true, max_count = 5000 })
         end,
-        desc = "Lazy Git",
+        desc = "GitGraph - Draw",
       },
       { "<leader>l", group = "+LSP" },
       { "<leader>r", group = "+REPL" },

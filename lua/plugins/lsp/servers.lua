@@ -80,6 +80,7 @@ local servers = {
     },
   },
   dockerls = {},
+  docker_compose_language_service = {},
   rust_analyzer = {
     settings = {
       ["rust-analyzer"] = {
@@ -107,33 +108,33 @@ local servers = {
   },
   eslint = {},
   -- handled via typescript-tools
-  tsserver = {
-    disable_formatting = true,
-    settings = {
-      javascript = {
-        inlayHints = {
-          includeInlayEnumMemberValueHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayVariableTypeHints = true,
-        },
-      },
-      typescript = {
-        inlayHints = {
-          includeInlayEnumMemberValueHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayVariableTypeHints = true,
-        },
-      },
-    },
-  },
+  -- ts_ls = {
+  --   disable_formatting = true,
+  --   settings = {
+  --     javascript = {
+  --       inlayHints = {
+  --         includeInlayEnumMemberValueHints = true,
+  --         includeInlayFunctionLikeReturnTypeHints = true,
+  --         includeInlayFunctionParameterTypeHints = true,
+  --         includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+  --         includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+  --         includeInlayPropertyDeclarationTypeHints = true,
+  --         includeInlayVariableTypeHints = true,
+  --       },
+  --     },
+  --     typescript = {
+  --       inlayHints = {
+  --         includeInlayEnumMemberValueHints = true,
+  --         includeInlayFunctionLikeReturnTypeHints = true,
+  --         includeInlayFunctionParameterTypeHints = true,
+  --         includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+  --         includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+  --         includeInlayPropertyDeclarationTypeHints = true,
+  --         includeInlayVariableTypeHints = true,
+  --       },
+  --     },
+  --   },
+  -- },
   angularls = {},
   vimls = {},
   julials = {},
@@ -216,13 +217,13 @@ local function lsp_capabilities()
   capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
   -- Needed for UFO
-  local present, ufo = pcall(require, "ufo")
-  if present then
-    capabilities.textDocument.foldingRange = {
-      dynamicRegistration = false,
-      lineFoldingOnly = true,
-    }
-  end
+  -- local present, ufo = pcall(require, "ufo")
+  -- if present then
+  --   capabilities.textDocument.foldingRange = {
+  --     dynamicRegistration = false,
+  --     lineFoldingOnly = true,
+  --   }
+  -- end
   return capabilities
 end
 
@@ -251,6 +252,11 @@ function M.setup()
   require("mason-lspconfig").setup()
   require("mason-lspconfig").setup_handlers {
     function(server)
+      -- https://github.com/neovim/nvim-lspconfig/pull/3232
+      -- handled via typescript-tools
+      -- if server == "tsserver" then
+      --   server = "ts_ls"
+      -- end
       local opts = servers[server] or {}
       opts.capabilities = lsp_capabilities()
       opts.on_attach = on_attach
