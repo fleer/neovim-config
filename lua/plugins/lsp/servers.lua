@@ -69,7 +69,16 @@ local servers = {
       },
     },
   },
-  ruff_lsp = {},
+  ruff_lsp = {
+    init_options = {
+      settings = {
+        -- Any extra CLI arguments for `ruff` go here.
+        args = {
+          "--preview",
+        },
+      },
+    },
+  },
   dockerls = {},
   rust_analyzer = {
     settings = {
