@@ -39,7 +39,11 @@ return {
         },
         prompts = {
           Docs = {
-            prompt = "/COPILOT_GENERATE Please add documentation comment for the selection and respect the following restrictions: The lines of the comment should not exceed 80 characters. No line numbers should be displayed.",
+            prompt = [[/COPILOT_GENERATE Please add documentation comment for the selection and respect the following restrictions: 
+              - The lines of the comment should not exceed 80 characters. 
+              - No line numbers should be displayed.
+              - If the code is written in python, follow the google docstring style. 
+            ]],
           },
         },
       }
