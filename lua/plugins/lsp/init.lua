@@ -154,6 +154,8 @@ return {
           "r-languageserver",
           "dockerfile-language-server",
           "docker-compose-language-service",
+          "texlab",
+          "latexindent",
         },
         auto_update = false,
         run_on_start = true,
