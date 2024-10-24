@@ -36,9 +36,9 @@ vim.opt.cmdheight = 1
 -- Incremental (“live”) :substitute function
 vim.opt.inccommand = "split"
 -- ignore case when searching
-vim.opt.ignorecase = true
+-- vim.opt.ignorecase = true
 -- if the search string has an upper case letter in it, the search will be case sensitive
-vim.opt.smartcase = true
+-- vim.opt.smartcase = true
 -- Automatically re-read file if a change was detected outside of vim
 vim.opt.autoread = true
 -- No swap file
