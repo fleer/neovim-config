@@ -146,7 +146,7 @@ return {
           "json-lsp",
           "eslint-lsp",
           "typescript-language-server",
-          "ruff_lsp",
+          "ruff",
           "sqlfluff",
           "prettier",
           "write-good",
