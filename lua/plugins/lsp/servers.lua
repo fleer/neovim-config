@@ -69,11 +69,7 @@ local servers = {
       },
     },
   },
-  ruff = {
-    init_options = {
-      settings = {},
-    },
-  },
+  ruff = {},
   dockerls = {},
   docker_compose_language_service = {},
   rust_analyzer = {
