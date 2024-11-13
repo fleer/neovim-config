@@ -22,24 +22,21 @@ return {
     "wellle/targets.vim",
     event = "CursorMoved",
   },
+  -- Extend f, F, t, T to work on multiple lines.
+  -- Repeat jump by pressing f, F, t, T again. It is reset when cursor moved as a result of not jumping or timeout after idle time (duration customizable).
+  -- Highlight (after customizable delay) all possible target characters and stop it after some (customizable) idle time.
+  -- Normal, Visual, and Operator-pending (with full dot-repeat) modes are supported.
   {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    ---@type Flash.Config
-    opts = {},
-    -- stylua: ignore
-    -- keys = {
-    --   { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-    --   { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-    --   { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-    --   { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-    --   { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-    -- },
+    "echasnovski/mini.jump",
+    version = "*",
+    event = "BufReadPre",
+    config = function()
+      require("mini.jump").setup()
+    end,
   },
   {
     -- Quick navigation through quickfix list
     "tpope/vim-unimpaired",
-    event = "BufReadPre",
   },
   -- git signs
   {

@@ -1,45 +1,22 @@
 return {
-  "rest-nvim/rest.nvim",
-  dependencies = { "nvim-lua/plenary.nvim" },
-  event = "VeryLazy",
-  config = function()
-    require("rest-nvim").setup({
-      -- Open request results in a horizontal split
-      result_split_horizontal = false,
-      -- Keep the http file buffer above|left when split horizontal|vertical
-      result_split_in_place = false,
-      -- Skip SSL verification, useful for unknown certificates
-      skip_ssl_verification = false,
-      -- Encode URL before making request
-      encode_url = true,
-      -- Highlight request on run
-      highlight = {
-        enabled = true,
-        timeout = 150,
+  {
+    "rest-nvim/rest.nvim",
+    ft = "http",
+    event = "VeryLazy",
+    keys = {
+      -- Run command under cursor
+      { "<localleader>rr", "<cmd>Rest run<cr>", desc = "Run request under cursor" },
+      { "<localleader>rl", "<cmd>Rest run last<cr>", desc = "Re-Run last request" },
+      {
+        "<localleader>fe",
+        function()
+          -- first load extension
+          require("telescope").load_extension "rest"
+          -- then use it, you can also use the `:Telescope rest select_env` command
+          require("telescope").extensions.rest.select_env()
+        end,
+        desc = "REST Environment Variables",
       },
-      result = {
-        -- toggle showing URL, HTTP info, headers at top the of result window
-        show_url = true,
-        show_http_info = true,
-        show_headers = true,
-        -- executables or functions for formatting response body [optional]
-        -- set them to false if you want to disable them
-        formatters = {
-          json = "jq",
-          html = function(body)
-            return vim.fn.system({ "tidy", "-i", "-q", "-" }, body)
-          end
-        },
-      },
-      -- Jump to request line on run
-      jump_to_request = false,
-      env_file = '.env',
-      custom_dynamic_variables = {},
-      yank_dry_run = true,
-    })
-  end,
-  keys = {
-    -- Run command under cursor
-    { "<leader>tr", "<Plug>RestNvim<cr>", desc = "Run REST Command" },
-  }
+    },
+  },
 }
