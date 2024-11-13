@@ -48,6 +48,7 @@ local servers = {
         },
         schemas = {
           ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/master-standalone-strict/all.json"] = "*-k8s.yaml",
+          ["https://raw.githubusercontent.com/bitol-io/open-data-contract-standard/main/schema/odcs-json-schema-latest.json"] = "datacontract.yaml",
           ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
           ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "/Workflow/*",
           ["https://azuremlschemas.azureedge.net/latest/MLTable.schema.json"] = "MLTable",
@@ -69,11 +70,7 @@ local servers = {
       },
     },
   },
-  ruff = {
-    init_options = {
-      settings = {},
-    },
-  },
+  ruff = {},
   dockerls = {},
   docker_compose_language_service = {},
   rust_analyzer = {
