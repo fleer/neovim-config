@@ -26,7 +26,7 @@ return {
     config = function(_, opts)
       local tokyonight = require "tokyonight"
       tokyonight.setup(opts)
-      -- tokyonight.load()
+      tokyonight.load()
     end,
   },
   {
@@ -36,7 +36,7 @@ return {
     config = function()
       local catppuccin = require "catppuccin"
       catppuccin.setup { flavour = "latte" }
-      catppuccin.load()
+      -- catppuccin.load()
     end,
     priority = 1000,
   },

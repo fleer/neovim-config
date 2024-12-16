@@ -21,7 +21,6 @@ return {
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
       { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
-
       { "<leader>g", group = "+Git" },
       {
         "<leader>gc",
@@ -103,6 +102,7 @@ return {
       {
         "<leader>ccd",
         "<cmd>'<,'>CopilotChatDocs<cr>",
+        -- "<cmd>CopilotChatDocs<cr>",
         mode = { "n", "v" },
         desc = "CopilotChat - Add Docs for the selection",
       },
@@ -114,10 +114,51 @@ return {
         desc = "CopilotChat - Fix diagnostic",
       },
       {
+        "<leader>ccc",
+        "<cmd>CopilotChatCommit<cr>", -- Reset chat history and clear buffer.
+        desc = "CopilotChat - Create commit based on staged files",
+      },
+      {
         "<leader>ccr",
         "<cmd>CopilotChatReset<cr>", -- Reset chat history and clear buffer.
         desc = "CopilotChat - Reset chat history and clear buffer",
       },
+      { "<leader>t", group = "+Test", icon = "" },
+      {
+        "<leader>tr",
+        function()
+          require("neotest").run.run()
+        end,
+        desc = "Run the nearest test",
+      },
+      {
+        "<leader>tt",
+        function()
+          -- require("neotest").run.run(vim.fn.getcwd())
+          require("neotest").run.run { suite = true }
+        end,
+        desc = "Run all tests",
+      },
+      {
+        "<leader>tf",
+        function()
+          require("neotest").run.run(vim.fn.expand "%")
+        end,
+        desc = "Run the current file",
+      },
+      {
+        "<leader>tw",
+        function()
+          require("neotest").watch.watch()
+        end,
+        desc = "Watch file",
+      },
+      { "<leader>ta", "<cmd>w|lua require('neotest').run.attach()<cr>", desc = "Attach" },
+      { "<leader>tl", "<cmd>w|lua require('neotest').run.run_last()<cr>", desc = "Last" },
+      { "<leader>tn", "<cmd>w|lua require('neotest').run.run()<cr>", desc = "Nearest" },
+      { "<leader>to", "<cmd>w|lua require('neotest').output.open({ enter = true })<cr>", desc = "Output" },
+      { "<leader>ts", "<cmd>w|lua require('neotest').run.stop()<cr>", desc = "Stop" },
+      { "<leader>tS", "<cmd>w|lua require('neotest').summary.toggle()<cr>", desc = "Summary" },
     }
   end,
 }

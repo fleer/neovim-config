@@ -12,6 +12,10 @@ local servers = {
   --     rangeVariableTypes = true,
   --   },
   -- },
+  -- toml
+  taplo = {},
+  -- jinja2
+  jinja_lsp = {},
   -- html
   html = {
     filetypes = { "html", "javascript", "javascriptreact", "javascript.jsx", "typescriptreact", "typescript.tsx" },

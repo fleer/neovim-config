@@ -65,6 +65,15 @@ vim.opt.wildignore = "*/node_modules/**,*/.git/**,*/dist/**,*/build/**,*.venv/**
 -- JoosepAlviste/nvim-ts-context-commentstring
 vim.g.skip_ts_context_commentstring_module = true
 
+-- Add jinja filetype
+vim.filetype.add {
+  extension = {
+    jinja = "jinja",
+    jinja2 = "jinja",
+    j2 = "jinja",
+  },
+}
+
 -- ============================================================================ "
 -- ===                                UI                                    === "
 -- ============================================================================ "

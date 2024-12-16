@@ -3,7 +3,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     version = "*",
     dependencies = {
-      -- { "nvim-treesitter/nvim-treesitter-textobjects", event = "BufReadPre" },
+      { "nvim-treesitter/nvim-treesitter-textobjects", event = "BufReadPre" },
       { "windwp/nvim-ts-autotag", event = "InsertEnter" },
       { "HiPhish/rainbow-delimiters.nvim", event = "BufReadPre" },
       { "RRethy/nvim-treesitter-textsubjects", event = "BufReadPre" },
@@ -23,47 +23,47 @@ return {
             use_colorpalette = true,
             -- highlight = { "TSParameter" },
             -- For Light Themes
-            colorpalette = {
-              { fg = "#5c6370" }, -- Dark gray
-              { fg = "#e06c75" }, -- Light red
-              { fg = "#98c379" }, -- Light green
-              { fg = "#c678dd" }, -- Light purple
-              { fg = "#e5c07b" }, -- Light yellow
-              { fg = "#61afef" }, -- Light blue
-              { fg = "#d19a66" }, -- Light orange
-              { fg = "#56b6c2" }, -- Light cyan
-              { fg = "#abb2bf" }, -- Light gray
-              { fg = "#d7ba7d" }, -- Light brown
-              { fg = "#be5046" }, -- Light red-brown
-              { fg = "#b3b9c5" }, -- Light gray-blue
-              { fg = "#c8ccd4" }, -- Light gray-green
-              { fg = "#7d8799" }, -- Medium gray
-            },
-            -- For Dark Themes
             -- colorpalette = {
-            --   { fg = "#ef9062" },
-            --   { fg = "#3AC6BE" },
-            --   { fg = "#35D27F" },
-            --   { fg = "#EB75D6" },
-            --   { fg = "#E5D180" },
-            --   { fg = "#8997F5" },
-            --   { fg = "#D49DA5" },
-            --   { fg = "#7FEC35" },
-            --   { fg = "#F6B223" },
-            --   { fg = "#F67C1B" },
-            --   { fg = "#DE9A4E" },
-            --   { fg = "#BBEA87" },
-            --   { fg = "#EEF06D" },
-            --   { fg = "#8FB272" },
+            --   { fg = "#5c6370" }, -- Dark gray
+            --   { fg = "#e06c75" }, -- Light red
+            --   { fg = "#98c379" }, -- Light green
+            --   { fg = "#c678dd" }, -- Light purple
+            --   { fg = "#e5c07b" }, -- Light yellow
+            --   { fg = "#61afef" }, -- Light blue
+            --   { fg = "#d19a66" }, -- Light orange
+            --   { fg = "#56b6c2" }, -- Light cyan
+            --   { fg = "#abb2bf" }, -- Light gray
+            --   { fg = "#d7ba7d" }, -- Light brown
+            --   { fg = "#be5046" }, -- Light red-brown
+            --   { fg = "#b3b9c5" }, -- Light gray-blue
+            --   { fg = "#c8ccd4" }, -- Light gray-green
+            --   { fg = "#7d8799" }, -- Medium gray
             -- },
-            -- excluded_filetypes = {
-            --   "lua",
-            --   "rust",
-            --   "typescript",
-            --   "typescriptreact",
-            --   "javascript",
-            --   "javascriptreact",
-            -- },
+            -- For Dark Themes
+            colorpalette = {
+              { fg = "#ef9062" },
+              { fg = "#3AC6BE" },
+              { fg = "#35D27F" },
+              { fg = "#EB75D6" },
+              { fg = "#E5D180" },
+              { fg = "#8997F5" },
+              { fg = "#D49DA5" },
+              { fg = "#7FEC35" },
+              { fg = "#F6B223" },
+              { fg = "#F67C1B" },
+              { fg = "#DE9A4E" },
+              { fg = "#BBEA87" },
+              { fg = "#EEF06D" },
+              { fg = "#8FB272" },
+            },
+            excluded_filetypes = {
+              "lua",
+              "rust",
+              "typescript",
+              "typescriptreact",
+              "javascript",
+              "javascriptreact",
+            },
           }
         end,
       },
@@ -121,46 +121,6 @@ return {
             node_decremental = "grm",
           },
         },
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-            keymaps = {
-              -- You can use the capture groups defined in textobjects.scm
-              ["aa"] = "@parameter.outer",
-              ["ia"] = "@parameter.inner",
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = "@class.inner",
-            },
-          },
-          move = {
-            enable = true,
-            set_jumps = true, -- whether to set jumps in the jumplist
-            goto_next_start = {
-              ["[M"] = "@function.outer",
-              ["[{"] = "@class.outer",
-            },
-            goto_next_end = {
-              ["]m"] = "@function.outer",
-              ["]]"] = "@class.outer",
-            },
-            goto_previous_start = {
-              ["[m"] = "@function.outer",
-              ["[["] = "@class.outer",
-            },
-            goto_previous_end = {
-              ["]M"] = "@function.outer",
-              ["]}"] = "@class.outer",
-            },
-          },
-          swap = {
-            enable = true,
-            swap_next = swap_next,
-            swap_previous = swap_prev,
-          },
-        },
       }
     end,
   },
@@ -174,10 +134,10 @@ return {
       }
     end,
   },
-  {
-    "folke/ts-comments.nvim",
-    opts = {},
-    event = "VeryLazy",
-    enabled = true,
-  },
+  -- {
+  --   "folke/ts-comments.nvim",
+  --   opts = {},
+  --   event = "VeryLazy",
+  --   enabled = true,
+  -- },
 }

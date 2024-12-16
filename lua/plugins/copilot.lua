@@ -23,7 +23,7 @@ return {
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
+    branch = "main",
     dependencies = {
       { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
@@ -39,11 +39,7 @@ return {
         },
         prompts = {
           Docs = {
-            prompt = [[/COPILOT_GENERATE Please add documentation comment for the selection and respect the following restrictions: 
-              - The lines of the comment should not exceed 80 characters. 
-              - No line numbers should be displayed.
-              - If the code is written in python, follow the google docstring style. 
-            ]],
+            prompt = "> /COPILOT_GENERATE\n\nPlease add documentation comment for the selection and respect the following restrictions:\n- The lines of the comment should not exceed 80 characters.\n- No line numbers should be displayed.\n- If the code is written in python, follow the google docstring style.",
           },
         },
       }
