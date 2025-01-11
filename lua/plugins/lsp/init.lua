@@ -170,17 +170,13 @@ return {
     dependencies = { "mason.nvim" },
   },
   {
-    "utilyre/barbecue.nvim",
-    event = "VeryLazy",
-    version = "*",
-    dependencies = {
-      "neovim/nvim-lspconfig",
-      "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons",
-    },
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    event = "BufReadPre",
     config = function()
-      require("barbecue").setup {
-        attach_navic = false, -- prevent barbecue from automatically attaching nvim-navic
+      require("lsp_lines").setup()
+      -- Disable virtual_text since it's redundant due to lsp_lines.
+      vim.diagnostic.config {
+        virtual_text = false,
       }
     end,
   },

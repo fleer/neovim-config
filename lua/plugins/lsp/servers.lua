@@ -172,15 +172,6 @@ local function on_attach(client, bufnr)
   -- Use LSP as the handler for formatexpr.
   -- See `:help formatexpr` for more information.
   vim.api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
-
-  -- Used for barbecue.nvim
-  if caps["documentSymbolProvider"] then
-    -- Handled via tsserver
-    if client.name ~= "typescript-tools" then
-      require("nvim-navic").attach(client, bufnr)
-    end
-  end
-
   if client.name == "eslint" then
     -- caps.document_formatting = true
     -- Eslint AutoFormat
