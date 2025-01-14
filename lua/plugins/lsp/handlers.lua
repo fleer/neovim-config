@@ -10,8 +10,8 @@ function M.setup()
       border = "rounded",
     },
     diagnostic = {
-      -- virtual_text = true,
-      virtual_text = { spacing = 4, prefix = "●" },
+      -- Handled via lsp_lines.nvim
+      -- virtual_text = { spacing = 4, prefix = "●" },
       underline = true,
       update_in_insert = false,
       severity_sort = true,
@@ -26,9 +26,9 @@ function M.setup()
   -- Diagnostic signs
   local diagnostic_signs = {
     { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-    { name = "DiagnosticSignWarn",  text = icons.diagnostics.Warning },
-    { name = "DiagnosticSignHint",  text = icons.diagnostics.Hint },
-    { name = "DiagnosticSignInfo",  text = icons.diagnostics.Information },
+    { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
+    { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
+    { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
   }
   for _, sign in ipairs(diagnostic_signs) do
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
