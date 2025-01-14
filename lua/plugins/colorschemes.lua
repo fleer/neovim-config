@@ -1,16 +1,4 @@
 return {
-  -- {
-  --   "folke/styler.nvim",
-  --   event = "VeryLazy",
-  --   config = function()
-  --     require("styler").setup {
-  --       themes = {
-  --         markdown = { colorscheme = "catppuccin" },
-  --         help = { colorscheme = "gruvbox" },
-  --       },
-  --     }
-  --   end,
-  -- },
   {
     "folke/tokyonight.nvim",
     lazy = false,
@@ -41,28 +29,6 @@ return {
     priority = 1000,
   },
   {
-    "ellisonleao/gruvbox.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("gruvbox").setup()
-    end,
-  },
-  { --  colorscheme for (neo)vim written in lua specially made for roshnivim
-    "shaeinst/roshnivim-cs",
-    lazy = false,
-    priority = 1000,
-  },
-  {
-    --[[
-            Customizable colorscheme with excellent italic and bold support,
-            dark and light variants. Made to work and look good with Tree-sitter.
-          --]]
-    "rafamadriz/neon",
-    lazy = false,
-    priority = 1000,
-  },
-  {
     "mhartington/oceanic-next",
     lazy = false,
     priority = 1000,
@@ -74,16 +40,6 @@ return {
   },
   {
     "haishanh/night-owl.vim",
-    lazy = false,
-    priority = 1000,
-  },
-  {
-    "safv12/andromeda.vim",
-    lazy = false,
-    priority = 1000,
-  },
-  {
-    "phanviet/vim-monokai-pro",
     lazy = false,
     priority = 1000,
   },
@@ -131,33 +87,8 @@ return {
     priority = 1000,
   },
   {
-    "sainnhe/edge",
-    lazy = false,
-    priority = 1000,
-  },
-  {
-    "sainnhe/sonokai",
-    lazy = false,
-    priority = 1000,
-  },
-  {
-    "bluz71/vim-nightfly-guicolors",
-    lazy = false,
-    priority = 1000,
-  },
-  {
-    "fenetikm/falcon",
-    lazy = false,
-    priority = 1000,
-  },
-  {
     --[[   "arcticicestudio/nord-vim" ]]
     "shaunsingh/nord.nvim",
-    lazy = false,
-    priority = 1000,
-  },
-  {
-    "marko-cerovac/material.nvim",
     lazy = false,
     priority = 1000,
   },
