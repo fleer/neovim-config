@@ -21,7 +21,7 @@ return {
 
       local function lsp_client(msg)
         msg = msg or ""
-        local buf_clients = vim.lsp.get_active_clients()
+        local buf_clients = vim.lsp.get_clients()
         if next(buf_clients) == nil then
           if type(msg) == "boolean" or #msg == 0 then
             return ""
@@ -40,17 +40,17 @@ return {
         end
 
         -- add formatter
-        local formatters = require("plugins.lsp.format")
+        local formatters = require "plugins.lsp.format"
         local supported_formatters = formatters.list_registered(buf_ft)
         vim.list_extend(buf_client_names, supported_formatters)
 
         -- add linter
-        local linters = require("plugins.lsp.null-ls.linters")
+        local linters = require "plugins.lsp.null-ls.linters"
         local supported_linters = linters.list_registered(buf_ft)
         vim.list_extend(buf_client_names, supported_linters)
 
         -- add hover
-        local hovers = require("plugins.lsp.null-ls.hovers")
+        local hovers = require "plugins.lsp.null-ls.hovers"
         local supported_hovers = hovers.list_registered(buf_ft)
         vim.list_extend(buf_client_names, supported_hovers)
 
@@ -60,15 +60,14 @@ return {
 
         for _, v in ipairs(buf_client_names) do
           if not hash[v] then
-            res_buf_client_names[#res_buf_client_names + 1] =
-                v -- you could print here instead of saving to result table if you wanted
+            res_buf_client_names[#res_buf_client_names + 1] = v -- you could print here instead of saving to result table if you wanted
             hash[v] = true
           end
         end
         return "[" .. table.concat(res_buf_client_names, ", ") .. "]"
       end
 
-      local icons = require("config.icons")
+      local icons = require "config.icons"
 
       local function fg(name)
         return function()
@@ -113,19 +112,27 @@ return {
               -- color = fg("Constant"),
             },
             {
-              function() return require("noice").api.status.command.get() end,
-              cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-              color = fg("Statement")
+              function()
+                return require("noice").api.status.command.get()
+              end,
+              cond = function()
+                return package.loaded["noice"] and require("noice").api.status.command.has()
+              end,
+              color = fg "Statement",
             },
             {
-              function() return require("noice").api.status.mode.get() end,
-              cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-              color = fg("Constant"),
+              function()
+                return require("noice").api.status.mode.get()
+              end,
+              cond = function()
+                return package.loaded["noice"] and require("noice").api.status.mode.has()
+              end,
+              color = fg "Constant",
             },
             {
               require("lazy.status").updates,
               cond = require("lazy.status").has_updates,
-              color = fg("Special"),
+              color = fg "Special",
             },
             {
               "diff",
@@ -137,12 +144,12 @@ return {
             },
           },
           lualine_y = {
-            { "progress", separator = "",                   padding = { left = 1, right = 0 } },
+            { "progress", separator = "", padding = { left = 1, right = 0 } },
             { "location", padding = { left = 0, right = 1 } },
           },
           lualine_z = {
             function()
-              return " " .. os.date("%R")
+              return " " .. os.date "%R"
             end,
           },
         },
