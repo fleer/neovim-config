@@ -39,44 +39,6 @@ return {
     priority = 1000,
   },
   {
-    "haishanh/night-owl.vim",
-    lazy = false,
-    priority = 1000,
-  },
-  {
-    "navarasu/onedark.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {
-      -- Other config options...
-      -- darker
-      -- deep
-      -- deeper
-      -- warm
-      -- warmer
-      style = "dark",
-      transparent = false,
-      code_style = {
-        comments = "italic",
-        keywords = "bold",
-        functions = "bold",
-        strings = "none",
-        variables = "none",
-      },
-      -- Plugins Config --
-      diagnostics = {
-        darker = true, -- darker colors for diagnostic
-        undercurl = true, -- use undercurl instead of underline for diagnostics
-        background = true, -- use background color for virtual text
-      },
-    },
-    config = function(_, opts)
-      local onedark = require "onedark"
-      onedark.setup(opts)
-      -- onedark.load()
-    end,
-  },
-  {
     "dracula/vim",
     lazy = false,
     priority = 1000,

@@ -86,6 +86,9 @@ vim.opt.termguicolors = true -- True color support
 -- Set floating window to be slightly transparent
 vim.opt.winbl = 10
 
+-- Virtual Lines for Diagnostic
+vim.diagnostic.config { virtual_lines = true }
+
 -- === Set local leader ===
 vim.g.maplocalleader = ","
 

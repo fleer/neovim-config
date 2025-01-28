@@ -167,7 +167,8 @@ local function on_attach(client, bufnr)
 
   -- Enable completion triggered by <C-X><C-O>
   -- See `:help omnifunc` and `:help ins-completion` for more information.
-  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  --  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  vim.lsp.completion.enable(true, client.id, bufnr, opts)
 
   -- Use LSP as the handler for formatexpr.
   -- See `:help formatexpr` for more information.
@@ -185,7 +186,7 @@ local function on_attach(client, bufnr)
   if client.name == "julials" then
     -- disable virtual text (recommended for julia)
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-      virtual_text = false,
+      virtual_text = true,
       underline = false,
       signs = true,
       update_in_insert = false,
