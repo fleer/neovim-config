@@ -4,21 +4,17 @@ return {
   -- ============================================================================ "
   {
     "MeanderingProgrammer/markdown.nvim",
-    main = "render-markdown",
-    opts = {},
-    name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
-    ft = { "markdown", "pandoc.markdown" },
+    ft = { "markdown", "pandoc.markdown", "copilot-chat" },
+    config = function()
+      require("render-markdown").setup {
+        file_types = { "markdown", "copilot-chat", "pandoc.markdown" },
+      }
+    end,
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
     dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" }, -- if you use standalone mini plugins
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
   },
-  -- Markdown Preview
-  -- {
-  --   "iamcco/markdown-preview.nvim",
-  --   ft = { "markdown" },
-  --   build = "cd app && npm install",
-  --   init = function()
-  --     vim.g.mkdp_filetypes = { "markdown" }
-  --   end,
-  -- },
 }

@@ -69,17 +69,28 @@ return {
         desc = "Colorscheme",
       },
 
-      { "<leader>cc", group = "+Copilot", icon = "" },
+      { "<leader>cc", group = "+Copilot", icon = " " },
       -- Quick chat with Copilot
       {
         "<leader>ccq",
         function()
-          local input = vim.fn.input "Quick Chat: "
+          local input = vim.fn.input "  - Buffer: "
           if input ~= "" then
             require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
           end
         end,
-        desc = "CopilotChat - Quick chat",
+        desc = "CopilotChat - Quick chat on Buffer",
+      },
+      {
+        "<leader>ccx",
+        function()
+          local input = vim.fn.input " - Visual: "
+          if input ~= "" then
+            require("CopilotChat").ask(input, { selection = require("CopilotChat.select").visual })
+          end
+        end,
+        mode = { "v" },
+        desc = "CopilotChat - Quick chat on Visual selection",
       },
       -- Show help actions with telescope
       {
@@ -106,13 +117,13 @@ return {
         mode = { "n", "v" },
         desc = "CopilotChat - Add Docs for the selection",
       },
-      { "<leader>cce", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
-      { "<leader>cct", "<cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate tests" },
-      {
-        "<leader>ccf",
-        "<cmd>CopilotChatFixDiagnostic<cr>", -- Get a fix for the diagnostic message under the cursor.
-        desc = "CopilotChat - Fix diagnostic",
-      },
+      -- { "<leader>cce", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
+      -- { "<leader>cct", "<cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate tests" },
+      -- {
+      --   "<leader>ccf",
+      --   "<cmd>CopilotChatFixDiagnostic<cr>", -- Get a fix for the diagnostic message under the cursor.
+      --   desc = "CopilotChat - Fix diagnostic",
+      -- },
       {
         "<leader>ccc",
         "<cmd>CopilotChatCommit<cr>", -- Reset chat history and clear buffer.
