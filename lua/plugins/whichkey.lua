@@ -36,11 +36,18 @@ return {
       { "<leader>gh", "<cmd>0Gclog<cr>", desc = "File History" },
       { "<leader>gd", "<cmd>Gvdiffsplit<cr>", desc = "Diffview" },
       {
-        "<leader>gl",
+        "<leader>gg",
         function()
           require("gitgraph").draw({}, { all = true, max_count = 5000 })
         end,
         desc = "GitGraph - Draw",
+      },
+      {
+        "<leader>gl",
+        function()
+          require("utils.term").git_client_toggle()
+        end,
+        desc = "Stack Overflow",
       },
       { "<leader>l", group = "+LSP" },
       { "<leader>r", group = "+REPL" },
