@@ -5,11 +5,21 @@ return {
     dependencies = {
       { "github/copilot.vim" }, -- or github/copilot.vim
       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+      { "MeanderingProgrammer/markdown.nvim" },
+      { "nvim-telescope/telescope.nvim" }, -- Use telescope for help actions
     },
     build = "make tiktoken", -- Only on MacOS or Linux
     config = function()
       require("CopilotChat").setup {
         -- debug = true, -- Enable debug logging
+        -- You might also want to disable default header highlighting for copilot chat
+        -- when enabling render markdown integration
+        highlight_headers = false,
+        separator = "---",
+        error_header = "> [!ERROR] Error",
+        answer_header = ">  ",
+        question_header = ">  ",
+        ---
         window = {
           layout = "float",
           relative = "editor",
