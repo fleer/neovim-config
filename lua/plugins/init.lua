@@ -64,22 +64,6 @@ return {
         "Noice History"
       },
       { "<leader>sna", function() require("noice").cmd("all") end, desc = "Noice All" },
-      {
-        "<c-f>",
-        function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end,
-        silent = true,
-        expr = true,
-        desc =
-        "Scroll forward"
-      },
-      {
-        "<c-b>",
-        function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end,
-        silent = true,
-        expr = true,
-        desc =
-        "Scroll backward"
-      },
     },
   },
   -- better vim.notify

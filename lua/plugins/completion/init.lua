@@ -10,15 +10,12 @@ return {
       "hrsh7th/cmp-cmdline",
       -- Auto pairs
       "windwp/nvim-autopairs",
-      -- Github Copilot
-      "zbirenbaum/copilot-cmp",
     },
     config = function()
       local cmp = require "cmp"
       local luasnip = require "luasnip"
       local icons = require "config.icons"
       local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-      require("copilot_cmp").setup()
 
       local has_words_before = function()
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -79,7 +76,6 @@ return {
         },
         sources = cmp.config.sources {
           -- Copilot Source
-          { name = "copilot" }, --, group_index = 2 },
           { name = "nvim_lsp_signature_help" },
           { name = "nvim_lsp" },
           { name = "luasnip" },
@@ -95,7 +91,6 @@ return {
               path = "(Path)",
               luasnip = "(Snippet)",
               buffer = "(Buffer)",
-              copilot = "(Copilot)",
             }
             local duplicates = {
               buffer = 1,
@@ -109,32 +104,9 @@ return {
             end
             item.kind = icons.kind[item.kind]
             item.menu = source_names[entry.source.name]
-            -- Highlight for Copilot
-            item.dup = duplicates[entry.source.name] or duplicates_default
 
-            -- Highlight for Copilot
-            vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
             return item
           end,
-        },
-        -- keeping priority weight at 2, or placing the exact comparitor above copilot so that better lsp matches are not stuck below poor copilot matches
-        sorting = {
-          priority_weight = 2,
-          comparators = {
-            require("copilot_cmp.comparators").prioritize,
-
-            -- Below is the default comparitor list and order for nvim-cmp
-            cmp.config.compare.offset,
-            -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
-            cmp.config.compare.exact,
-            cmp.config.compare.score,
-            cmp.config.compare.recently_used,
-            cmp.config.compare.locality,
-            cmp.config.compare.kind,
-            cmp.config.compare.sort_text,
-            cmp.config.compare.length,
-            cmp.config.compare.order,
-          },
         },
       }
 
