@@ -177,6 +177,24 @@ return {
       { "<leader>to", "<cmd>w|lua require('neotest').output.open({ enter = true })<cr>", desc = "Output" },
       { "<leader>ts", "<cmd>w|lua require('neotest').run.stop()<cr>", desc = "Stop" },
       { "<leader>tS", "<cmd>w|lua require('neotest').summary.toggle()<cr>", desc = "Summary" },
+      -- Quarto
+      { "<leader>q", group = "[q]uarto" },
+      {
+        "<leader>qE",
+        function()
+          require("otter").export(true)
+        end,
+        desc = "[E]xport with overwrite",
+      },
+      { "<leader>qa", ":QuartoActivate<cr>", desc = "[a]ctivate" },
+      { "<leader>qe", require("otter").export, desc = "[e]xport" },
+      { "<leader>qh", ":QuartoHelp ", desc = "[h]elp" },
+      { "<leader>qp", ":lua require'quarto'.quartoPreview()<cr>", desc = "[p]review" },
+      { "<leader>qq", ":lua require'quarto'.quartoClosePreview()<cr>", desc = "[q]uiet preview" },
+      { "<leader>qr", group = "[r]un" },
+      { "<leader>qra", ":QuartoSendAll<cr>", desc = "run [a]ll" },
+      { "<leader>qrb", ":QuartoSendBelow<cr>", desc = "run [b]elow" },
+      { "<leader>qrr", ":QuartoSendAbove<cr>", desc = "to cu[r]sor" },
     }
   end,
 }
