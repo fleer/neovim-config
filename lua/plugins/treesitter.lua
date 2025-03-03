@@ -74,6 +74,22 @@ return {
           enable = true,
           enable_autocmd = false,
         },
+        -- For molten.nvim and quarto
+        textobjects = {
+          move = {
+            enable = true,
+            set_jumps = false,
+            goto_next_start = {
+              ["]b"] = { query = "@block.inner", desc = "next code block" },
+              -- The @class.inner queries also catch on markdown headings. @block.inner does not
+              -- ["]b"] = { query = "@class.inner", desc = "next block" },
+            },
+            goto_previous_start = {
+              ["[b"] = { query = "@block.inner", desc = "previous code block" },
+              -- ["[b"] = { query = "@class.inner", desc = "previous block" },
+            },
+          },
+        },
 
         indent = { enable = true, disable = { "python" } },
         incremental_selection = {
