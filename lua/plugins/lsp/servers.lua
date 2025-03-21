@@ -227,16 +227,11 @@ end
 local function lsp_capabilities()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
-  capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-  -- Needed for UFO
-  -- local present, ufo = pcall(require, "ufo")
-  -- if present then
-  --   capabilities.textDocument.foldingRange = {
-  --     dynamicRegistration = false,
-  --     lineFoldingOnly = true,
-  --   }
-  -- end
+  -- Remove when following issue is completed
+  -- https://github.com/neovim/nvim-lspconfig/issues/3494
+  capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+
   return capabilities
 end
 

@@ -1,180 +1,76 @@
 return {
   {
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "saadparwaiz1/cmp_luasnip",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      -- Auto pairs
-      "windwp/nvim-autopairs",
-    },
-    config = function()
-      local cmp = require "cmp"
-      local luasnip = require "luasnip"
-      local icons = require "config.icons"
-      local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+    "saghen/blink.cmp",
+    -- optional: provides snippets for the snippet source
+    -- dependencies = "rafamadriz/friendly-snippets",
 
-      local has_words_before = function()
-        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
-      end
+    -- use a release tag to download pre-built binaries
+    version = "*",
+    -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+    -- build = 'cargo build --release',
+    -- If you use nix, you can build from source using latest nightly rust with:
+    -- build = 'nix run .#build-plugin',
 
-      cmp.setup {
-        completion = {
-          completeopt = "menu,menuone,noinsert",
-        },
-        snippet = {
-          expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-          end,
-        },
-        window = {
-          documentation = {
-            border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-            winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
-          },
-        },
-        mapping = cmp.mapping.preset.insert {
-          ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-          ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-e>"] = cmp.mapping.abort(),
-          ["<CR>"] = cmp.mapping.confirm { select = true },
-          ["<C-j>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-              luasnip.expand_or_jump()
-            elseif has_words_before() then
-              cmp.complete()
-            else
-              fallback()
-            end
-          end, {
-            "i",
-            "s",
-            "c",
-          }),
-          ["<C-k>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              fallback()
-            end
-          end, {
-            "i",
-            "s",
-            "c",
-          }),
-        },
-        sources = cmp.config.sources {
-          -- Copilot Source
-          { name = "nvim_lsp_signature_help" },
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-          { name = "buffer" },
-          { name = "path" },
-        },
-        formatting = {
-          fields = { "kind", "abbr", "menu" },
-          format = function(entry, item)
-            local max_width = 0
-            local source_names = {
-              nvim_lsp = "(LSP)",
-              path = "(Path)",
-              luasnip = "(Snippet)",
-              buffer = "(Buffer)",
-            }
-            local duplicates = {
-              buffer = 1,
-              path = 1,
-              nvim_lsp = 0,
-              luasnip = 1,
-            }
-            local duplicates_default = 0
-            if max_width ~= 0 and #item.abbr > max_width then
-              item.abbr = string.sub(item.abbr, 1, max_width - 1) .. icons.ui.Ellipsis
-            end
-            item.kind = icons.kind[item.kind]
-            item.menu = source_names[entry.source.name]
-
-            return item
-          end,
-        },
-      }
-
-      -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-      cmp.setup.cmdline({ "/", "?" }, {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-          { name = "buffer" },
-        },
-      })
-
-      -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-      cmp.setup.cmdline(":", {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-          { name = "path" },
-        }, {
-          { name = "cmdline" },
-        }),
-      })
-
-      -- Auto pairs
-      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
-
-      -- Database completion
-      vim.api.nvim_exec(
-        [[
-          autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
-          autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
-        ]],
-        false
-      )
-    end,
-  },
-  {
-    "L3MON4D3/LuaSnip",
-    dependencies = {
-      {
-        "rafamadriz/friendly-snippets",
-        config = function()
-          local snippets_folder = vim.fn.stdpath "config" .. "/lua/config/snip/snippets/"
-          require("luasnip.loaders.from_vscode").lazy_load()
-          -- Load snippets
-          require("luasnip.loaders.from_vscode").lazy_load { paths = { "./snippets/typescript" } }
-          require("luasnip.loaders.from_vscode").lazy_load { paths = { "./snippets/angular" } }
-          require("luasnip.loaders.from_vscode").lazy_load { paths = { "./snippets/python" } }
-          require("luasnip.loaders.from_vscode").lazy_load { paths = { "./snippets/rust" } }
-        end,
-      },
-    },
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
     opts = {
-      history = true,
-      delete_check_events = "TextChanged",
-      updateevents = "TextChanged,TextChangedI",
-      enable_autosnippets = false,
-      store_selection_keys = "<C-q>",
-    },
-    -- stylua: ignore
-    keys = {
-      {
-        "<tab>",
-        function()
-          return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
-        end,
-        expr = true, remap = true, silent = true, mode = "i",
+      cmdline = {
+        completion = {
+          menu = { auto_show = true },
+          ghost_text = { enabled = true },
+        },
       },
-      { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
-      { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
+      completion = { documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 500,
+      } },
+      -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept, C-n/C-p for up/down)
+      -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys for up/down)
+      -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
+      --
+      -- All presets have the following mappings:
+      -- C-space: Open menu or open docs if already open
+      -- C-e: Hide menu
+      -- C-k: Toggle signature help
+      --
+      -- See the full "keymap" documentation for information on defining your own keymap.
+      keymap = {
+        preset = "none",
+        ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+        ["<C-e>"] = { "hide", "fallback" },
+        ["<CR>"] = { "accept", "fallback" },
+
+        ["<C-p>"] = { "select_prev", "fallback_to_mappings" },
+        ["<C-n>"] = { "select_next", "fallback_to_mappings" },
+        ["<C-b>"] = { "scroll_documentation_up", "fallback" },
+        ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+
+        ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
+      },
+      appearance = {
+        -- Sets the fallback highlight groups to nvim-cmp's highlight groups
+        -- Useful for when your theme doesn't support blink.cmp
+        -- Will be removed in a future release
+        use_nvim_cmp_as_default = true,
+        -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+        -- Adjusts spacing to ensure icons are aligned
+        nerd_font_variant = "mono",
+      },
+
+      -- Default list of enabled providers defined so that you can extend it
+      -- elsewhere in your config, without redefining it, due to `opts_extend`
+      sources = {
+        -- default = { "lsp", "path", "snippets", "buffer" },
+        default = { "lsp", "path", "buffer" },
+      },
+
+      -- Blink.cmp uses a Rust fuzzy matcher by default for typo resistance and significantly better performance
+      -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+      -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+      --
+      -- See the fuzzy documentation for more information
+      fuzzy = { implementation = "prefer_rust_with_warning" },
     },
+    opts_extend = { "sources.default" },
   },
 }

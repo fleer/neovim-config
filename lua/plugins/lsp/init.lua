@@ -9,8 +9,9 @@ return {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-nvim-lsp-signature-help",
+      -- Remove when following issue is completed
+      -- https://github.com/neovim/nvim-lspconfig/issues/3494
+      "saghen/blink.cmp",
       -- TypeScript
       {
         "pmizio/typescript-tools.nvim",
@@ -150,7 +151,6 @@ return {
           "prettier",
           "write-good",
           "yaml-language-server",
-          "r-languageserver",
           "dockerfile-language-server",
           "docker-compose-language-service",
           "texlab",
@@ -168,16 +168,4 @@ return {
     event = "BufReadPre",
     dependencies = { "mason.nvim" },
   },
-  --  {
-  --    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-  --    event = "BufReadPre",
-  --    config = function()
-  --      require("lsp_lines").setup()
-  --      -- Disable virtual_text since it's redundant due to lsp_lines.
-  --      vim.diagnostic.config {
-  --        virtual_text = false,
-  --        virtual_lines = { only_current_line = true },
-  --      }
-  --    end,
-  --  },
 }
