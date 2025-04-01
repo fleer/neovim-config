@@ -121,15 +121,6 @@ return {
       },
     },
   },
-
-  -- {
-  --   "rbong/vim-flog",
-  --   lazy = true,
-  --   cmd = { "Flog", "Flogsplit" },
-  --   dependencies = {
-  --     "tpope/vim-fugitive",
-  --   },
-  -- },
   {
     "pwntester/octo.nvim",
     cmd = "Octo",

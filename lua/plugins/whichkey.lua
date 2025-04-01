@@ -47,7 +47,7 @@ return {
         function()
           require("utils.term").git_client_toggle()
         end,
-        desc = "Stack Overflow",
+        desc = "Lazygit",
       },
       { "<leader>l", group = "+LSP" },
       { "<leader>r", group = "+REPL" },

@@ -3,7 +3,6 @@ return {
     "benlubas/molten-nvim",
     dependencies = { "3rd/image.nvim" },
     build = ":UpdateRemotePlugins",
-    ft = { "python" },
     init = function()
       -- this guide will be using image.nvim
       -- Don't forget to setup and install the plugin if you want to view image outputs

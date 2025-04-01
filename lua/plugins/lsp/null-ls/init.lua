@@ -22,11 +22,12 @@ end
 
 -- TODO: create own file in ./diagnostics/ for all sources
 local sources = {
-  b.formatting.sqlfluff.with { extra_args = { "--dialect", "postgres" } },
+  b.formatting.sqlfluff,
   b.formatting.shfmt,
   with_root_file(b.formatting.stylua, "stylua.toml"),
 
   -- diagnostics
+  b.diagnostics.sqlfluff,
   b.diagnostics.write_good.with { filetypes = { "md", "markdown", "markdown.pandoc", "vimwiki" } },
   -- b.diagnostics.markdownlint,
   -- with_root_file(b.diagnostics.selene, "selene.toml"),
