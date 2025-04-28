@@ -199,7 +199,7 @@ local function on_attach(client, bufnr)
       vim.lsp.inlay_hint.enable(true, { bufnr })
     end
     -- semantic highlighting
-    if caps.semanticTokensProvider and caps.semanticTokensProvider.full then
+    if caps.semanticTokensProvider and caps.semanticTokensProvider.full and vim.lsp.buf.semantic_tokens_full ~= nil then
       local augroup = vim.api.nvim_create_augroup("SemanticTokens", {})
       vim.api.nvim_create_autocmd("TextChanged", {
         group = augroup,
