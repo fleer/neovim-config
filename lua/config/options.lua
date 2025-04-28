@@ -45,9 +45,24 @@ vim.opt.autoread = true
 vim.opt.swapfile = false
 
 -- Treesitter based folding
+vim.opt.foldenable = true
 vim.opt.foldlevel = 20
 vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- Default treesitter for folding
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- Use lsp folding if available
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client:supports_method "textDocument/foldingRange" then
+      local win = vim.api.nvim_get_current_win()
+      vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+    end
+  end,
+})
+vim.opt.foldtext = ""
+vim.opt.foldcolumn = "0"
+vim.opt.fillchars:append { fold = " " }
 
 -- Use nvim-ufo
 -- vim.o.foldcolumn = '1' -- '0' is not bad
