@@ -50,13 +50,19 @@ vim.opt.foldlevel = 20
 vim.opt.foldmethod = "expr"
 -- Default treesitter for folding
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
--- Use lsp folding if available
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+    -- Use lsp folding if available
     if client:supports_method "textDocument/foldingRange" then
       local win = vim.api.nvim_get_current_win()
       vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+    end
+
+    -- enable document color if supported (requires nvim >= 0.12)
+    if client:supports_method "textDocument/documentColor" then
+      vim.lsp.document_color.enable(true, args.buf)
     end
   end,
 })
