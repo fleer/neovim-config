@@ -227,11 +227,6 @@ end
 local function lsp_capabilities()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-  -- Remove when following issue is completed
-  -- https://github.com/neovim/nvim-lspconfig/issues/3494
-  capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
-
   return capabilities
 end
 
@@ -257,19 +252,20 @@ function M.setup()
   require("plugins.lsp.null-ls").setup(options)
 
   -- require("mason-lspconfig").setup({ ensure_installed = vim.tbl_keys(servers) })
-  require("mason-lspconfig").setup()
-  require("mason-lspconfig").setup_handlers {
-    function(server)
-      -- https://github.com/neovim/nvim-lspconfig/pull/3232
-      -- handled via typescript-tools
-      -- if server == "tsserver" then
-      --   server = "ts_ls"
-      -- end
-      local opts = servers[server] or {}
-      opts.capabilities = lsp_capabilities()
-      opts.on_attach = on_attach
-      require("lspconfig")[server].setup(opts)
-    end,
+  require("mason-lspconfig").setup {
+    handlers = {
+      function(server)
+        -- https://github.com/neovim/nvim-lspconfig/pull/3232
+        -- handled via typescript-tools
+        -- if server == "tsserver" then
+        --   server = "ts_ls"
+        -- end
+        local opts = servers[server] or {}
+        opts.capabilities = lsp_capabilities()
+        opts.on_attach = on_attach
+        require("lspconfig")[server].setup(opts)
+      end,
+    },
   }
 end
 
