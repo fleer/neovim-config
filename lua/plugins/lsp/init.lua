@@ -9,6 +9,9 @@ return {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
+      -- Remove when following issue is completed
+      -- https://github.com/neovim/nvim-lspconfig/issues/3494
+      "saghen/blink.cmp",
       -- TypeScript
       {
         "pmizio/typescript-tools.nvim",
