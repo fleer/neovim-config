@@ -108,7 +108,7 @@ vim.opt.termguicolors = true -- True color support
 vim.opt.winbl = 10
 
 -- Virtual Lines for Diagnostic
-vim.diagnostic.config { virtual_lines = true }
+vim.diagnostic.config { virtual_lines = { current_line = true } }
 
 -- === Set local leader ===
 vim.g.maplocalleader = ","
