@@ -6,12 +6,9 @@ return {
     dependencies = {
       "b0o/schemastore.nvim",
       "rust-lang/rust.vim",
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
+      "mason-org/mason.nvim",
+      "mason-org/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
-      -- Remove when following issue is completed
-      -- https://github.com/neovim/nvim-lspconfig/issues/3494
-      "saghen/blink.cmp",
       -- TypeScript
       {
         "pmizio/typescript-tools.nvim",
