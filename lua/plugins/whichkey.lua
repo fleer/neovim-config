@@ -54,19 +54,35 @@ return {
       { "<leader>c", group = "+Code" },
       { "<leader>s", group = "+Search" },
       {
-        "<leader>sc",
+        "<leader>ss",
+        mode = { "n", "x", "o" },
         function()
-          require("utils.term").cht()
+          require("flash").jump()
         end,
-        desc = "cht.sh",
+        desc = "Flash",
       },
       {
-        "<leader>ss",
+        "<leader>sS",
+        mode = { "n", "x", "o" },
         function()
-          require("utils.term").so()
+          require("flash").treesitter()
         end,
-        desc = "Stack Overflow",
+        desc = "Flash Treesitter",
       },
+      -- {
+      --   "<leader>sc",
+      --   function()
+      --     require("utils.term").cht()
+      --   end,
+      --   desc = "cht.sh",
+      -- },
+      -- {
+      --   "<leader>ss",
+      --   function()
+      --     require("utils.term").so()
+      --   end,
+      --   desc = "Stack Overflow",
+      -- },
       { "<leader>z", group = "+System" },
       {
         "<leader>zc",

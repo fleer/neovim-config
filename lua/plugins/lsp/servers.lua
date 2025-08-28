@@ -59,6 +59,11 @@ local servers = {
         },
         schemaDownload = { enable = true },
         validate = true,
+        redhat = {
+          telemetry = {
+            enabled = false,
+          },
+        },
       },
     },
   },

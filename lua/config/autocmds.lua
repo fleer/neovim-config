@@ -163,3 +163,16 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 -- Create nice PDF from Markdown using eisvogel template
 -- https://github.com/Wandmalfarbe/pandoc-latex-template
 vim.api.nvim_command ":command Md2pdf !pandoc % -o %:r.pdf --from markdown --template eisvogel --listings --pdf-engine=xelatex"
+
+vim.api.nvim_create_autocmd({ "TermOpen" }, {
+  pattern = "*",
+  callback = function()
+    -- Set the terminal to be non-spellchecked
+    vim.opt_local.spell = false
+    -- Set the terminal to be non-numbered
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+    -- Set the terminal to be non-folded
+    vim.opt_local.foldenable = false
+  end,
+})

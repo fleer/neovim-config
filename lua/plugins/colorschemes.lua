@@ -2,71 +2,60 @@ return {
   {
     "folke/tokyonight.nvim",
     lazy = false,
-    -- priority = 1000,
     opts = {
-      style = "night",
-      transparent = false,
+      style = "moon",
+      transparent = true,
       styles = {
         sidebars = "transparent",
-        floats = "transparent",
+        floats = "normal",
       },
     },
-    -- config = function(_, opts)
-    --   local tokyonight = require "tokyonight"
-    --   tokyonight.setup(opts)
-    --   tokyonight.load()
-    -- end,
+    config = function(_, opts)
+      local tokyonight = require "tokyonight"
+      tokyonight.setup(opts)
+      tokyonight.load()
+    end,
   },
   {
     "catppuccin/nvim",
     lazy = false,
     name = "catppuccin",
-    config = function()
-      local catppuccin = require "catppuccin"
-      catppuccin.setup { flavour = "frappe" }
-      catppuccin.load()
-    end,
-    priority = 1000,
+    -- config = function()
+    --   local catppuccin = require "catppuccin"
+    --   catppuccin.setup { flavour = "frappe" }
+    --   catppuccin.load()
+    -- end,
   },
   {
     "mhartington/oceanic-next",
     lazy = false,
-    -- priority = 1000,
   },
   {
     "NLKNguyen/papercolor-theme",
     lazy = false,
-    -- priority = 1000,
   },
   {
-    "dracula/vim",
-    lazy = false,
-    -- priority = 1000,
+    "Mofiqul/dracula.nvim",
   },
   {
     "sainnhe/everforest",
     lazy = false,
-    -- priority = 1000,
   },
   {
     --[[   "arcticicestudio/nord-vim" ]]
     "shaunsingh/nord.nvim",
     lazy = false,
-    -- priority = 1000,
   },
   {
     "rebelot/kanagawa.nvim",
     lazy = false,
-    -- priority = 1000,
   },
   {
     "EdenEast/nightfox.nvim",
     lazy = false,
-    -- priority = 1000,
   },
   {
     "projekt0n/github-nvim-theme",
     lazy = false,
-    -- priority = 1000,
   },
 }
