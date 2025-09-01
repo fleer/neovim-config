@@ -64,6 +64,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if client:supports_method "textDocument/documentColor" then
       vim.lsp.document_color.enable(true, args.buf, { style = "virtual" })
     end
+
+    -- allows the LSP to provide formatting/edits as characters are typed in the buffer.
+    -- For example, basedpyright uses this to automatically convert python strings to f-strings
+    -- when you type { inside them. Lua_ls and rust-analyzer also support this method
+    -- for other helpful stuff.
+    if client:supports_method "textDocument/onTypeFormatting" then
+      vim.lsp.on_type_formatting.enable(true, args.buf)
+    end
   end,
 })
 vim.opt.foldtext = ""
