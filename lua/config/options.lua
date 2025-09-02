@@ -70,7 +70,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- when you type { inside them. Lua_ls and rust-analyzer also support this method
     -- for other helpful stuff.
     if client:supports_method "textDocument/onTypeFormatting" then
-      vim.lsp.on_type_formatting.enable(true, args.buf)
+      vim.lsp.on_type_formatting.enable(true, { args.data.client_id })
     end
   end,
 })
