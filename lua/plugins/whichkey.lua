@@ -21,6 +21,9 @@ return {
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
       { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
+      { "<leader>n", group = "+Jupytext cell" },
+      { "<leader>nc", mode = { "n" }, "o# %%<CR>", desc = "Create a new python cell" },
+      { "<leader>nm", mode = { "n" }, "o# %% [markdown]<CR># ", desc = "Create a new markdown cell" },
       { "<leader>g", group = "+Git" },
       {
         "<leader>gc",
