@@ -4,6 +4,7 @@ return {
     event = "BufReadPre",
     version = false,
     dependencies = {
+      "github/copilot.vim",
       "b0o/schemastore.nvim",
       "rust-lang/rust.vim",
       "mason-org/mason.nvim",
