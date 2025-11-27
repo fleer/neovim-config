@@ -47,6 +47,16 @@ return {
         ["<C-f>"] = { "scroll_documentation_down", "fallback" },
 
         ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
+        ["<Tab>"] = {
+          "snippet_forward",
+          function() -- sidekick next edit suggestion
+            return require("sidekick").nes_jump_or_apply()
+          end,
+          function() -- if you are using Neovim's native inline completions
+            return vim.lsp.inline_completion.get()
+          end,
+          "fallback",
+        },
       },
       appearance = {
         -- Sets the fallback highlight groups to nvim-cmp's highlight groups

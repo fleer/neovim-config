@@ -12,6 +12,13 @@ local servers = {
   --     rangeVariableTypes = true,
   --   },
   -- },
+  copilot = {
+    settings = {
+      telemetry = {
+        telemetryLevel = "off",
+      },
+    },
+  },
   -- toml
   taplo = {},
   -- jinja2
