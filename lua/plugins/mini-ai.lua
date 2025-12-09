@@ -2,7 +2,7 @@ return {
   {
     "nvim-mini/mini.ai",
     version = "*",
-    event = "VeryLazy",
+    event = "CursorMoved",
     config = function()
       require("mini.ai").setup {
         custom_textobjects = {
