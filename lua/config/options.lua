@@ -31,8 +31,8 @@ vim.opt.wrap = true
 --vim.opt.nocursorline
 -- Autovim.opt.to current directory
 --vim.opt.autochdir
--- Better display for messages
-vim.opt.cmdheight = 1
+-- Hide cmdline when not in use
+vim.opt.cmdheight = 0
 -- Incremental (“live”) :substitute function
 vim.opt.inccommand = "split"
 -- ignore case when searching
